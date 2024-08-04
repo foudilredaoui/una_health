@@ -1,5 +1,7 @@
-from pydantic import BaseModel
 from datetime import datetime
+
+from pydantic import BaseModel
+
 
 class GlucoseLevelBase(BaseModel):
     user_id: str
@@ -8,8 +10,10 @@ class GlucoseLevelBase(BaseModel):
     timestamp: datetime
     glucose_value: float
 
+
 class GlucoseLevelCreate(GlucoseLevelBase):
     pass
+
 
 class GlucoseLevel(GlucoseLevelBase):
     id: int

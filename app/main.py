@@ -1,6 +1,6 @@
-from fastapi import FastAPI
-from app.routers import glucose_levels
 from app.db.core import Base, engine
+from app.routers import glucose_levels
+from fastapi import FastAPI
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address

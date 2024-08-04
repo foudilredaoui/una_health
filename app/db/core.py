@@ -1,6 +1,6 @@
-from sqlalchemy import create_engine 
-from sqlalchemy.orm import sessionmaker, DeclarativeBase
 from app.config import settings
+from sqlalchemy import create_engine
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 SQLALCHEMY_DATABASE_URL = settings.database_url
 
@@ -11,7 +11,6 @@ class NotFoundError(Exception):
 
 class Base(DeclarativeBase):
     pass
-
 
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)

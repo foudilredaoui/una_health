@@ -1,5 +1,7 @@
-from sqlalchemy import Column, Integer, String, Float, DateTime
+from sqlalchemy import Column, DateTime, Float, Integer, String
+
 from .core import Base
+
 
 class GlucoseLevel(Base):
     __tablename__ = "glucose_levels"

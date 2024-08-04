@@ -8,3 +8,7 @@ databases[postgresql]
 alembic
 pydantic
 pydantic-settings
+ruff
+mypy
+black
+isort
