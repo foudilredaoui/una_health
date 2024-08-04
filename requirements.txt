@@ -12,3 +12,7 @@ ruff
 mypy
 black
 isort
+pytest
+hypothesis
+coverage
+httpx

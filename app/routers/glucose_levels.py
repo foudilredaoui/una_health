@@ -1,4 +1,5 @@
-from typing import List
+from datetime import datetime
+from typing import List, Optional
 
 from app import schemas
 from app.db.core import NotFoundError, get_db
@@ -19,16 +20,27 @@ router = APIRouter(
 
 
 @router.get("/", response_model=List[schemas.GlucoseLevel])
-@limiter.limit("5/minute")
+@limiter.limit("100/second")
 def read_glucose_levels(
     request: Request,
     user_id: str,
     db: Session = Depends(get_db),
-    skip: int = 0,
-    limit: int = 10,
+    start_timestamp: Optional[datetime] = None,
+    stop_timestamp: Optional[datetime] = None,
+    sort_by: Optional[str] = "timestamp",
+    sort_order: Optional[str] = "asc",
+    limit: Optional[int] = 100,
+    offset: Optional[int] = 0,
 ):
     glucose_levels = get_glucose_levels(
-        db, user_id=user_id, skip=skip, limit=limit
+        db,
+        user_id=user_id,
+        start_timestamp=start_timestamp,
+        stop_timestamp=stop_timestamp,
+        sort_by=sort_by,
+        sort_order=sort_order,
+        offset=offset,
+        limit=limit,
     )
     return glucose_levels
 

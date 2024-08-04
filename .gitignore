@@ -12,3 +12,15 @@ venv/
 .DS_Store
 
 __pycache__/
+
+.ruff_cache
+
+.mypy_cache
+
+*.sqlite3
+
+.coverage
+.coverage.*
+
+# Hypothesis
+.hypothesis/
