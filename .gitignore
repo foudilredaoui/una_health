@@ -24,3 +24,5 @@ __pycache__/
 
 # Hypothesis
 .hypothesis/
+
+test.db

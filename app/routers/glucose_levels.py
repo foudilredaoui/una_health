@@ -46,7 +46,7 @@ def read_glucose_levels(
 
 
 @router.get("/{id}", response_model=schemas.GlucoseLevel)
-@limiter.limit("5/minute")
+@limiter.limit("100/second")
 def read_glucose_level(
     request: Request, id: int, db: Session = Depends(get_db)
 ):

@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from app.db.core import NotFoundError
 from sqlalchemy.orm import Session
 
 from .models import GlucoseLevel
@@ -33,11 +34,16 @@ def get_glucose_levels(
 
 
 def get_glucose_level(db: Session, glucose_level_id: int):
-    return (
+    glucose_level = (
         db.query(GlucoseLevel)
         .filter(GlucoseLevel.id == glucose_level_id)
         .first()
     )
+    if glucose_level is None:
+        raise NotFoundError(
+            f"Glucose level with id {glucose_level_id} not found."
+        )
+    return glucose_level
 
 
 def create_glucose_level(
