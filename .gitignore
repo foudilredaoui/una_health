@@ -1,0 +1,14 @@
+
+# Virtual environments
+.venv
+env/
+venv/
+
+# Environment variables
+.env
+
+.vscode
+
+.DS_Store
+
+__pycache__/
