@@ -19,3 +19,11 @@ services:
       POSTGRES_PASSWORD: una_health123
     ports:
       - "5432:5432"
+
+  migrate_and_populate:
+    build: .
+    command: python run_migrations_and_populate.py
+    volumes:
+      - .:/app
+    depends_on:
+      - db
